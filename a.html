@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .buttonBox {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            box-sizing: border-box;
+            padding: 40px;
+            background-color: rgb(255, 255, 255);
+            
+        }
+        .buttonBox button {
+            margin:  10px;
+            color: black;
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <div class="buttonBox">
+        <p>Você é gay?</p>
+        <button id="yesButton">Sim</button>
+        <button id="noButton">Não</button>
+    </div>
+
+    <script>
+        document.getElementById('noButton').addEventListener('click', function() {
+            this.style.position = 'absolute';
+            this.style.top = Math.random() * window.innerHeight + 'px';
+            this.style.left = Math.random() * window.innerWidth + 'px';
+        });
+
+        document.getElementById('yesButton').addEventListener('click', function() {
+            alert('Lá eleee KKKKKKKKKKK!');
+        });
+    </script>
+</body>
+</html>
