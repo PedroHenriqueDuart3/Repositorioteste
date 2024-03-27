@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tênis do Haras</title>
-    <link rel="icon" href="vetor-de-desenho-de-coisas-de-esporte-de-raquete-de-tenis-e-bola_608387-83.avif">
+    <link rel="icon" href="vetor-de-desenho-de-coisas-de-esporte-de-raquete-de-tenis-e-bola_608387-83.avif" type="image/x-icon">
     <link rel="stylesheet" href="tennis.css">
 </head>
 <body>
@@ -71,6 +71,12 @@
     </div>
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <h2 id="who">Apoiam</h2>
+    <style>
+        #lista-de-nomes tr {
+            display: none;
+        }
+    </style>
+    
     <form id="formulario">
         <label for="nome">Nome:</label><br>
         <input type="text" id="nome" name="nome"><br>
@@ -82,6 +88,7 @@
         <textarea id="apoio" name="apoio"></textarea><br>
         <input type="submit" value="Adicionar à lista">
     </form>
+    
     <table id="lista-de-nomes">
         <tr>
             <th>Nome</th>
@@ -90,6 +97,7 @@
             <th>Por que apoia?</th>
         </tr>
     </table>
+    
     <script>
         // Carregar dados do localStorage na inicialização
         var dados = JSON.parse(localStorage.getItem('dados')) || [];
@@ -125,10 +133,14 @@
             ['nome', 'endereco', 'numero', 'apoio'].forEach(function(campo) {
                 document.getElementById(campo).value = '';
             });
+    
+            // Mostrar as linhas da tabela quando os dados são inseridos
+            var linhas = document.querySelectorAll('#lista-de-nomes tr');
+            linhas.forEach(function(linha) {
+                linha.style.display = 'table-row';
+            });
         });
     </script>
-    
-       </script>
        <a href="#indice"></a>
 </body>
 </html>
