@@ -97,7 +97,7 @@
             <th>Por que apoia?</th>
         </tr>
     </table>
-    
+
     <script>
         // Carregar dados do localStorage na inicialização
         var dados = JSON.parse(localStorage.getItem('dados')) || [];
@@ -206,6 +206,19 @@
             });
             // atualizar a tabela
         });
+
+            function resetarTabela() {
+        // Limpar o localStorage
+        localStorage.removeItem('dados');
+
+        // Remover todas as linhas da tabela, exceto o cabeçalho
+        var tabela = document.getElementById('lista-de-nomes');
+        var linhas = tabela.getElementsByTagName('tr');
+        while (linhas.length > 1) {
+            tabela.removeChild(linhas[1]);
+        }}
+        <button onclick="resetarTabela()">Resetar Tabela</button>
+
 
     </script>
        <a href="#indice"></a>
