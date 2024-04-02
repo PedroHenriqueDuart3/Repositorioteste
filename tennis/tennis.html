@@ -118,19 +118,19 @@
             var dado = {
                 nome: document.getElementById('nome').value,
                 endereco: document.getElementById('endereco').value,
-                numero: document.getElementById('numero').value,
+                telefone: document.getElementById('numero').value,
                 apoio: document.getElementById('apoio').value
             };
             dados.push(dado);
             localStorage.setItem('dados', JSON.stringify(dados));
             var tr = document.createElement('tr');
-            ['nome', 'endereco', 'numero', 'apoio'].forEach(function(campo) {
+            ['nome', 'endereco', 'telefone', 'apoio'].forEach(function(campo) {
                 var td = document.createElement('td');
                 td.textContent = dado[campo];
                 tr.appendChild(td);
             });
             listaDeNomes.appendChild(tr);
-            ['nome', 'endereco', 'numero', 'apoio'].forEach(function(campo) {
+            ['nome', 'endereco', 'telefone', 'apoio'].forEach(function(campo) {
                 document.getElementById(campo).value = '';
             });
     
@@ -187,7 +187,7 @@
             var dado = {
                 nome: document.getElementById('nome').value,
                 endereco: document.getElementById('endereco').value,
-                numero: document.getElementById('numero').value,
+                numero: document.getElementById('telefone').value,
                 apoio: document.getElementById('apoio').value
             };
             fetch('/nomes', {
