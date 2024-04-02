@@ -20,8 +20,6 @@
     <li>Pedido</li>
     <li>Quem apoia?</li>
     </div>
-
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
         <hr>
     <div style="font-family: Josefin sans;">
         <h2 id="ideia">Ideia</h2>
@@ -35,10 +33,9 @@
             <br>
             Por mais que já exista uma intenção da diretoria em fazer algo, nunca se foi posto em prática ideias como essas, que são ideias maravilhosas que poderiam incluir inclusive academia para todos (ainda não temos aqui)
             
-            <a href="#fin"><li>Finalidade do site</li></a>
+            <a><li>Finalidade do site</li></a>
         </p>
     </div>
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <div style="font-family: Josefin sans;">
         <h2 id="fin">Finalidade do Site</h2>
         <div>
@@ -52,11 +49,9 @@
                 <br>
                 Esperamos que este site seja um recurso valioso para todos os envolvidos e ajude a transformar a visão de quadras de tênis e uma academia no condomínio Haras em realidade.
         </p>
-            <a href="#ped"><li>Pedido</li></a>
-
+        <a><li>Pedido</li></a>
     </div>
     <div style="font-family: Josefin sans;">
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
         <h2 id="ped">Pedido</h2>
         <p>Dito isso, nós que estamos à frente desta ideia, pedimos a colaboração de todos. Acreditamos que, juntos, podemos transformar essa visão em realidade. Cada pequeno passo, cada contribuição, por menor que seja, nos aproxima do nosso objetivo. Vamos unir forças para tornar o condomínio Haras um lugar ainda melhor para se viver. Contamos com o apoio de todos vocês para fazer essa ideia se tornar realidade.
             <br>
@@ -67,10 +62,9 @@
             Juntos, podemos criar um espaço que não apenas melhora a saúde e o bem-estar de todos, mas também fortalece nosso senso de comunidade. Vamos transformar o condomínio Haras em um lugar onde todos possam se exercitar, se divertir e se conectar com os vizinhos.
             Agradecemos antecipadamente por qualquer ajuda que você possa oferecer e estamos ansiosos para ver o que podemos alcançar juntos. Vamos fazer isso acontecer! 
         </p>
-        <a href="#who"><li>Quem apoia?</li></a>
+        <a><li>Quem apoia?</li></a>
     </div>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <h2 id="who">Apoiam</h2>
+    <h2>Apoiam</h2>
     <style>
         #lista-de-nomes tr {
             display: none;
@@ -140,85 +134,6 @@
                 linha.style.display = 'table-row';
             });
         });
-        const express = require('express');
-        const MongoClient = require('mongodb').MongoClient;
-        const bodyParser = require('body-parser');
-        const app = express();
-
-        app.use(bodyParser.json());
-
-        let db;
-
-        MongoClient.connect('mongodb://localhost:27017', { useUnifiedTopology: true }, (err, client) => {
-            if (err) return console.error(err);
-            console.log('Connected to Database');
-            db = client.db('nomesDB');
-        });
-
-        app.get('/nomes', (req, res) => {
-            db.collection('nomes').find().toArray()
-                .then(results => {
-                    res.json(results);
-                })
-                .catch(error => console.error(error));
-        });
-
-        app.post('/nomes', (req, res) => {
-            db.collection('nomes').insertOne(req.body)
-                .then(result => {
-                    res.json('Success');
-                })
-                .catch(error => console.error(error));
-        });
-
-        app.listen(3000, function () {
-            console.log('listening on 3000');
-        });
-        
-        // Carregar dados do servidor na inicialização
-        fetch('/nomes')
-            .then(response => response.json())
-            .then(dados => {
-                // preencher a tabela com os dados
-            });
-// Adicionar novo dado à lista e enviar para o servidor
-        document.getElementById('formulario').addEventListener('submit', function(event) {
-            event.preventDefault();
-            var dado = {
-                nome: document.getElementById('nome').value,
-                endereco: document.getElementById('endereco').value,
-                numero: document.getElementById('telefone').value,
-                apoio: document.getElementById('apoio').value
-            };
-            fetch('/nomes', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(dado),
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Success:', data);
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
-            // atualizar a tabela
-        });
-
-            function resetarTabela() {
-        // Limpar o localStorage
-        localStorage.removeItem('dados');
-
-        // Remover todas as linhas da tabela, exceto o cabeçalho
-        var tabela = document.getElementById('lista-de-nomes');
-        var linhas = tabela.getElementsByTagName('tr');
-        while (linhas.length > 1) {
-            tabela.removeChild(linhas[1]);
-        }}
-        <button onclick="resetarTabela()">Resetar Tabela</button>
-
 
     </script>
        <a href="#indice"></a>
