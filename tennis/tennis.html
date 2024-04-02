@@ -93,7 +93,7 @@
         <tr>
             <th>Nome</th>
             <th>Endereço</th>
-            <th>Número</th>
+            <th>Telefone</th>
             <th>Por que apoia?</th>
         </tr>
     </table>
@@ -140,6 +140,73 @@
                 linha.style.display = 'table-row';
             });
         });
+        const express = require('express');
+        const MongoClient = require('mongodb').MongoClient;
+        const bodyParser = require('body-parser');
+        const app = express();
+
+        app.use(bodyParser.json());
+
+        let db;
+
+        MongoClient.connect('mongodb://localhost:27017', { useUnifiedTopology: true }, (err, client) => {
+            if (err) return console.error(err);
+            console.log('Connected to Database');
+            db = client.db('nomesDB');
+        });
+
+        app.get('/nomes', (req, res) => {
+            db.collection('nomes').find().toArray()
+                .then(results => {
+                    res.json(results);
+                })
+                .catch(error => console.error(error));
+        });
+
+        app.post('/nomes', (req, res) => {
+            db.collection('nomes').insertOne(req.body)
+                .then(result => {
+                    res.json('Success');
+                })
+                .catch(error => console.error(error));
+        });
+
+        app.listen(3000, function () {
+            console.log('listening on 3000');
+        });
+        
+        // Carregar dados do servidor na inicialização
+        fetch('/nomes')
+            .then(response => response.json())
+            .then(dados => {
+                // preencher a tabela com os dados
+            });
+// Adicionar novo dado à lista e enviar para o servidor
+        document.getElementById('formulario').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var dado = {
+                nome: document.getElementById('nome').value,
+                endereco: document.getElementById('endereco').value,
+                numero: document.getElementById('numero').value,
+                apoio: document.getElementById('apoio').value
+            };
+            fetch('/nomes', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(dado),
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+            // atualizar a tabela
+        });
+
     </script>
        <a href="#indice"></a>
 </body>
