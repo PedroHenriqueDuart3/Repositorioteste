@@ -1,7 +1,7 @@
 body::after {
   content: "";
   background: url('Fundosite.png');
-  opacity: 0.8;
+  opacity: 0.5;
   top: 0;
   left: 0;
   bottom: 0;
@@ -10,7 +10,7 @@ body::after {
   z-index: -1;   
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-size: cover;
+  background-size: cover ;
 }
 
 h1{
@@ -39,3 +39,17 @@ th {
 #lista-de-nomes tr {
     display: none;
 }
+img{
+  
+    width: 50%;
+    height: auto; 
+  
+}
+  
+  /* Ajustar a imagem para dispositivos menores */
+  @media (max-width: 768px) {
+    img {
+      width: 100%; /* Imagem ocupa toda a largura da tela */
+      height: 100%;
+    }
+  }
